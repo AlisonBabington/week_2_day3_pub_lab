@@ -1,3 +1,5 @@
+require "pry"
+
 class Customer
 
 
@@ -8,6 +10,10 @@ class Customer
     @wallet = wallet
     @age = age
     @drunkeness = drunkeness
+  end
+
+  def buy_drink(drink)
+    @wallet -= drink.price
   end
 
 end

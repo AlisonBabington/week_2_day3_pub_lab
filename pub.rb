@@ -8,4 +8,6 @@ class Pub
     @drinks = drinks || []
   end
 
+
+
 end
