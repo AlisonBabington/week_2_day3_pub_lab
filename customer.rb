@@ -12,9 +12,17 @@ class Customer
     @drunkeness = drunkeness
   end
 
-  def buy_drink(drink, pub)
+  def buy_drink(drink, pub, customer)
+    if pub.checks_age(customer) == false
+      return "Sorry, you're too young to buy a drink"
+    else
     @wallet -= drink.price
     pub.take_money(drink, pub)
+    end
+  end
+
+  def increase_drunkeness(drink)
+    @drunkeness += drink.alcohol_level
   end
 
 end
