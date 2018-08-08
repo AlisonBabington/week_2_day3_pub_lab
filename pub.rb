@@ -8,6 +8,8 @@ class Pub
     @drinks = drinks || []
   end
 
-
+  def take_money(drink)
+    @till += drink.price
+  end
 
 end
