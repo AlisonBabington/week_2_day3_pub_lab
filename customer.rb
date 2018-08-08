@@ -12,8 +12,9 @@ class Customer
     @drunkeness = drunkeness
   end
 
-  def buy_drink(drink)
+  def buy_drink(drink, pub)
     @wallet -= drink.price
+    pub.take_money(drink, pub)
   end
 
 end
