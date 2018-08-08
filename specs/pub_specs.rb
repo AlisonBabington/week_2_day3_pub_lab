@@ -16,6 +16,10 @@ class PubTest < MiniTest::Test
     assert_equal("SuperPub", @pub.name)
   end
 
+  def test_pub_has_money
+    assert_equal(250, @pub.till)
+  end
+
 
 
 
