@@ -4,6 +4,7 @@ require_relative('../customer.rb')
 require_relative('../drink.rb')
 require_relative('../drink.rb')
 require_relative('../pub.rb')
+require_relative('../Food.rb')
 require "pry"
 
 class CustomerTest < MiniTest::Test
@@ -14,6 +15,7 @@ class CustomerTest < MiniTest::Test
     @drink1 = Drink.new("Martini", 8.30, 2)
     @drink2 = Drink.new("Picpoul", 6.00, 3)
     @pub = Pub.new("SuperPub", 250.00, [@drink1, @drink2])
+    @food1 = Food.new("Pizza", 10.30, 3)
   end
 
   def test_customer_has_name
@@ -33,16 +35,11 @@ class CustomerTest < MiniTest::Test
   end
 
   def test_buy_drink__wallet_value_decreased
-    @customer1.buy_drink(@drink1, @pub, @customer1)
+    @customer1.buy_drink(@drink1, @pub)
     assert_equal(191.70, @customer1.wallet)
     assert_equal(258.30, @pub.till)
   end
 
-  def test_pub_checks_age_before_selling
-    @customer2.buy_drink(@drink1, @pub, @customer2)
-    assert_equal("Sorry, you're too young to buy a drink",
-    @customer2.buy_drink(@drink1, @pub, @customer2))
-  end
 
   def test_customer_drunk
     @customer1.increase_drunkeness(@drink1)
@@ -57,9 +54,8 @@ class CustomerTest < MiniTest::Test
 
 
 
-   def test_customer_cannot_buy_drink
-     expected =@customer3.buy_drink(@drink1, @pub,
-      @customer3)
-     assert_equal("Sorry, you're too drunk", expected)
+   def test_food_reduce_drunkeness
+     @customer3.reduce_drunkeness(@food1)
+     assert_equal(9, @customer3.drunkeness)
    end
 end

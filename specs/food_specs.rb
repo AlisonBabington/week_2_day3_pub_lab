@@ -8,6 +8,7 @@ require_relative('../Food.rb')
 class FoodTest < MiniTest::Test
 def setup
   @food1 = Food.new("Pizza", 10.30, 3)
+  @customer3 = Customer.new("Emily", 120.00, 28, 12)
 end
 
 def test_food_has_name
@@ -21,5 +22,7 @@ end
 def test_food_has_rejuvenation_level
   assert_equal(3, @food1.rejuvenation_level)
 end
+
+
 
 end
