@@ -16,7 +16,9 @@ def test_drink_has_price
   assert_equal(8, @drink.price)
 end
 
-
+def test_drink_has_alcohol_level
+  assert_equal(2, @drink.alcohol_level)
+end
 
 
 
